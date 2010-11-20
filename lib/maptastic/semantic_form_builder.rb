@@ -22,9 +22,9 @@ module Maptastic
     end
 
     def map_js(methods, zoom)
-      @template.content_tag("script", :lang => "javascript") do
+      @template.content_tag("script", :type => "text/javascript") do
         "
-MaptasticMap.init({
+new MaptasticMap({
     mapId: '#{map_div_id(methods)}',
     latInput: '#{map_input_id(methods.first)}',
     lngInput: '#{map_input_id(methods.last)}',
