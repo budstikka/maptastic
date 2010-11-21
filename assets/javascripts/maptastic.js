@@ -30,6 +30,19 @@ MaptasticMap = (function() {
 			clazz.setMarker(map, event.latLng);
 			clazz.updateInputs(event.latLng);
 		});
+		var	search = document.getElementById('maptastic-search'),
+				timer = null;
+		if(search) {
+			search.onkeyup = function() {
+				if(timer) clearTimeout(timer);
+				
+				timer = setTimeout(function() {
+					clazz.findAddress(search.value);
+				}, 800);
+				
+			};
+		}
+		
   };
 
   var setMarker = function(map, location) {
@@ -66,7 +79,7 @@ MaptasticMap = (function() {
         clazz.setMarker(clazz.map, location);
         clazz.updateInputs(location);
       } else {
-        alert("Geocode was not successful for the following reason: " + status);
+        // alert("Geocode was not successful for the following reason: " + status);
       }
     });
 	};
